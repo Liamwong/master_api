@@ -11,6 +11,17 @@ javascript/
 └── client/       # API client (not started yet)
 ```
 
+## Stack
+
+The server deliberately uses built-in Node modules where it can, so the HTTP layer is written by hand.
+
+| Concern     | Choice                     | Notes                                 |
+| ----------- | -------------------------- | ------------------------------------- |
+| HTTP server | `node:http` (built-in)     | Routing and body parsing done by hand |
+| Validation  | [Zod](https://zod.dev)     | Only external dependency              |
+| Persistence | In-memory `Map` (built-in) | Data is lost on restart               |
+| Testing     | `node:test` (built-in)     | Run with `npm test`                   |
+
 ## Prerequisites
 
 - [nvm](https://github.com/nvm-sh/nvm) (Node Version Manager)

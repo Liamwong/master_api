@@ -11,5 +11,8 @@
     "start": "node src/index.js",
     "dev": "node --watch src/index.js",
     "test": "node --test"
+  },
+  "dependencies": {
+    "zod": "^4.6.7"
   }
 }
