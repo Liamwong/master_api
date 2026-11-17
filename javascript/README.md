@@ -8,8 +8,19 @@ Node.js implementation of the master API.
 javascript/
 ├── .nvmrc        # pinned Node version (24)
 ├── server/       # API server
-└── client/       # API client (not started yet)
+└── client/       # API client that calls the server
 ```
+
+## Stack
+
+The server deliberately uses built-in Node modules where it can, so the HTTP layer is written by hand.
+
+| Concern     | Choice                     | Notes                                 |
+| ----------- | -------------------------- | ------------------------------------- |
+| HTTP server | `node:http` (built-in)     | Routing and body parsing done by hand |
+| Validation  | [Zod](https://zod.dev)     | Only external dependency              |
+| Persistence | In-memory `Map` (built-in) | Data is lost on restart               |
+| Testing     | `node:test` (built-in)     | Run with `npm test`                   |
 
 ## Prerequisites
 
@@ -41,6 +52,16 @@ From `javascript/server`:
 | ------------- | ------------------------------------------------- |
 | `npm start`   | Runs the server (`src/index.js`)                  |
 | `npm run dev` | Runs the server and restarts it when files change |
+
+### Client
+
+With the server running, from `javascript/client`:
+
+```sh
+npm start   # calls every endpoint and prints the results
+```
+
+The client targets `http://localhost:3000` by default. Set `API_BASE_URL` to point it elsewhere.
 
 ## Test
 
