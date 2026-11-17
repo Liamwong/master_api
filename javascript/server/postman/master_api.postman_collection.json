@@ -1,0 +1,63 @@
+{
+  "info": {
+    "name": "Master API (JavaScript)",
+    "description": "Endpoints for the Node.js server in javascript/server. Start it with `npm run dev`.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "List players",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/players",
+          "host": ["{{baseUrl}}"],
+          "path": ["players"]
+        }
+      }
+    },
+    {
+      "name": "Create player",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Kevin Durant\",\n  \"team\": \"Houston Rockets\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/player",
+          "host": ["{{baseUrl}}"],
+          "path": ["player"]
+        }
+      }
+    },
+    {
+      "name": "Get teams",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/teams",
+          "host": ["{{baseUrl}}"],
+          "path": ["teams"]
+        }
+      }
+    }
+  ]
+}
